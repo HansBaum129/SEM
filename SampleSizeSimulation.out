@@ -1,0 +1,932 @@
+Mplus VERSION 8.5
+MUTHEN & MUTHEN
+02/05/2021  11:46 AM
+
+INPUT INSTRUCTIONS
+
+  TITLE: Sample size simulation for TAM model
+
+  MONTECARLO: NAMES ARE PEOU1 PEOU2 PEOU3 PEOU4
+                        PU1 PU2 PU3 PU4 BI1 BI2;
+  NOBSERVATIONS = 100;
+  NREPS = 10000;
+  SEED = 53487;
+  NGROUPS = 1;
+  !SAVE = vms.dat;
+
+  MODEL POPULATION:
+  PEOU BY PEOU1-PEOU4*.8;
+  PU BY PU1-PU4*.8;
+  BI BY BI1-BI2*.8;
+  PEOU@1.0; ! sets factor variance
+  PU@.75; ! sets residual factor variance
+  BI@.25;
+  [PEOU@0 PU@0 BI@0]; ! sets factor means to 0
+  PEOU1-PEOU4*.36;
+  PU1-PU4*.36;
+  BI1-BI2*.36;
+  PU ON PEOU*.5;
+  BI ON PEOU*.5;
+  BI ON PU*.5;
+  [PEOU1-PEOU4@0]; ! sets indicator intercepts to 0
+  [PU1-PU4@0];
+  [BI1-BI2@0];
+  Model Indirect: BI IND PU PEOU*.25; ! sets magnitude of indirect effect
+
+  MODEL:
+  PEOU BY PEOU1-PEOU4*.8;
+  PU BY PU1-PU4*.8;
+  BI BY BI1-BI2*.8;
+  PEOU@1.0; ! sets factor variance
+  PU@.75; ! sets residual factor variance
+  BI@.25;
+  [PEOU@0 PU@0 BI@0]; ! sets factor means to 0
+  PEOU1-PEOU4*.36;
+  PU1-PU4*.36;
+  BI1-BI2*.36;
+  PU ON PEOU*.5;
+  BI ON PEOU*.5;
+  BI ON PU*.5;
+  [PEOU1-PEOU4@0]; ! sets indicator intercepts to 0
+  [PU1-PU4@0];
+  [BI1-BI2@0];
+  Model Indirect: BI IND PU PEOU*.25; ! sets magnitude of indirect effect
+
+  OUTPUT: TECH9;
+
+
+
+INPUT READING TERMINATED NORMALLY
+
+
+
+Sample size simulation for TAM model
+
+SUMMARY OF ANALYSIS
+
+Number of groups                                                 1
+Number of observations                                         100
+
+Number of replications
+    Requested                                                10000
+    Completed                                                 9967
+Value of seed                                                53487
+
+Number of dependent variables                                   10
+Number of independent variables                                  0
+Number of continuous latent variables                            3
+
+Observed dependent variables
+
+  Continuous
+   PEOU1       PEOU2       PEOU3       PEOU4       PU1         PU2
+   PU3         PU4         BI1         BI2
+
+Continuous latent variables
+   PEOU        PU          BI
+
+
+Estimator                                                       ML
+Information matrix                                        OBSERVED
+Maximum number of iterations                                  1000
+Convergence criterion                                    0.500D-04
+Maximum number of steepest descent iterations                   20
+
+
+
+SAMPLE STATISTICS FOR THE FIRST REPLICATION
+
+
+     SAMPLE STATISTICS
+
+
+           Means
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+                0.100         0.026         0.065         0.000        -0.027
+
+
+           Means
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+               -0.092         0.001         0.015        -0.011         0.051
+
+
+           Covariances
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+ PEOU1          0.982
+ PEOU2          0.528         0.770
+ PEOU3          0.571         0.470         0.924
+ PEOU4          0.555         0.489         0.540         0.884
+ PU1            0.150         0.207         0.173         0.337         1.016
+ PU2            0.176         0.182         0.189         0.189         0.668
+ PU3            0.173         0.154         0.144         0.245         0.583
+ PU4            0.234         0.247         0.264         0.325         0.644
+ BI1            0.397         0.335         0.519         0.495         0.355
+ BI2            0.641         0.480         0.539         0.569         0.370
+
+
+           Covariances
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+ PU2            0.848
+ PU3            0.591         0.972
+ PU4            0.571         0.646         1.052
+ BI1            0.309         0.367         0.522         0.992
+ BI2            0.365         0.460         0.576         0.765         1.261
+
+
+           Correlations
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+ PEOU1          1.000
+ PEOU2          0.607         1.000
+ PEOU3          0.600         0.558         1.000
+ PEOU4          0.596         0.593         0.598         1.000
+ PU1            0.150         0.234         0.178         0.356         1.000
+ PU2            0.193         0.225         0.213         0.218         0.720
+ PU3            0.177         0.179         0.152         0.264         0.586
+ PU4            0.230         0.275         0.268         0.337         0.622
+ BI1            0.402         0.383         0.542         0.529         0.353
+ BI2            0.576         0.488         0.499         0.539         0.327
+
+
+           Correlations
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+ PU2            1.000
+ PU3            0.651         1.000
+ PU4            0.605         0.639         1.000
+ BI1            0.337         0.374         0.511         1.000
+ BI2            0.353         0.415         0.500         0.684         1.000
+
+
+MODEL FIT INFORMATION
+
+Number of Free Parameters                       23
+
+Loglikelihood
+
+    H0 Value
+
+        Mean                             -1132.788
+        Std Dev                             22.608
+        Number of successful computations     9967
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.991        -1185.380      -1184.579
+           0.980       0.981        -1179.217      -1179.022
+           0.950       0.953        -1169.975      -1169.350
+           0.900       0.899        -1161.762      -1161.900
+           0.800       0.801        -1151.814      -1151.707
+           0.700       0.700        -1144.643      -1144.680
+           0.500       0.493        -1132.788      -1133.190
+           0.300       0.300        -1120.932      -1120.984
+           0.200       0.199        -1113.761      -1113.941
+           0.100       0.101        -1103.814      -1103.692
+           0.050       0.051        -1095.600      -1095.221
+           0.020       0.022        -1086.358      -1085.529
+           0.010       0.011        -1080.195      -1079.098
+
+    H1 Value
+
+        Mean                             -1110.683
+        Std Dev                             23.158
+        Number of successful computations     9967
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.990        -1164.554      -1164.205
+           0.980       0.982        -1158.241      -1157.330
+           0.950       0.953        -1148.774      -1148.160
+           0.900       0.903        -1140.361      -1139.992
+           0.800       0.802        -1130.172      -1130.009
+           0.700       0.695        -1122.826      -1123.233
+           0.500       0.494        -1110.683      -1111.012
+           0.300       0.296        -1098.539      -1098.777
+           0.200       0.199        -1091.193      -1091.288
+           0.100       0.102        -1081.004      -1080.776
+           0.050       0.051        -1072.591      -1072.342
+           0.020       0.022        -1063.124      -1061.648
+           0.010       0.012        -1056.811      -1055.137
+
+Information Criteria
+
+    Akaike (AIC)
+
+        Mean                              2311.575
+        Std Dev                             45.216
+        Number of successful computations     9967
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.989         2206.390       2202.766
+           0.980       0.978         2218.716       2216.642
+           0.950       0.949         2237.200       2236.358
+           0.900       0.899         2253.627       2253.342
+           0.800       0.801         2273.522       2273.811
+           0.700       0.700         2287.864       2287.903
+           0.500       0.507         2311.575       2312.359
+           0.300       0.300         2335.286       2335.322
+           0.200       0.199         2349.629       2349.342
+           0.100       0.101         2369.524       2369.678
+           0.050       0.047         2385.950       2384.566
+           0.020       0.019         2404.435       2403.876
+           0.010       0.009         2416.760       2415.143
+
+    Bayesian (BIC)
+
+        Mean                              2371.494
+        Std Dev                             45.216
+        Number of successful computations     9967
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.989         2266.309       2262.685
+           0.980       0.978         2278.635       2276.561
+           0.950       0.949         2297.119       2296.277
+           0.900       0.899         2313.546       2313.260
+           0.800       0.801         2333.441       2333.730
+           0.700       0.700         2347.783       2347.822
+           0.500       0.507         2371.494       2372.277
+           0.300       0.300         2395.205       2395.241
+           0.200       0.199         2409.548       2409.261
+           0.100       0.101         2429.443       2429.597
+           0.050       0.047         2445.869       2444.484
+           0.020       0.019         2464.353       2463.795
+           0.010       0.009         2476.679       2475.062
+
+    Sample-Size Adjusted BIC (n* = (n + 2) / 24)
+
+        Mean                              2298.854
+        Std Dev                             45.216
+        Number of successful computations     9967
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.989         2193.670       2190.045
+           0.980       0.978         2205.995       2203.921
+           0.950       0.949         2224.479       2223.637
+           0.900       0.899         2240.906       2240.621
+           0.800       0.801         2260.801       2261.090
+           0.700       0.700         2275.143       2275.182
+           0.500       0.507         2298.854       2299.638
+           0.300       0.300         2322.566       2322.601
+           0.200       0.199         2336.908       2336.621
+           0.100       0.101         2356.803       2356.957
+           0.050       0.047         2373.230       2371.845
+           0.020       0.019         2391.714       2391.155
+           0.010       0.009         2404.039       2402.423
+
+Chi-Square Test of Model Fit
+
+        Degrees of freedom                      42
+
+        Mean                                44.210
+        Std Dev                              9.623
+        Number of successful computations     9967
+
+             Proportions                   Percentiles
+        Expected    Observed         Expected       Observed
+           0.990       0.995           23.650         24.932
+           0.980       0.989           25.383         26.899
+           0.950       0.968           28.144         29.629
+           0.900       0.931           30.765         32.300
+           0.800       0.854           34.157         36.018
+           0.700       0.775           36.755         38.820
+           0.500       0.594           41.335         43.407
+           0.300       0.387           46.282         48.596
+           0.200       0.273           49.456         52.124
+           0.100       0.153           54.090         56.950
+           0.050       0.084           58.124         61.127
+           0.020       0.037           62.892         66.249
+           0.010       0.020           66.206         69.704
+
+RMSEA (Root Mean Square Error Of Approximation)
+
+        Mean                                 0.024
+        Std Dev                              0.025
+        Number of successful computations     9967
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       1.000
+           0.050       0.811
+           0.020       0.510
+           0.010       0.455
+
+CFI/TLI
+
+    CFI
+
+        Mean                                 0.991
+        Std Dev                              0.012
+        Number of successful computations     9967
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       0.338
+           0.980       0.172
+           0.950       0.011
+           0.900       0.000
+           0.800       0.000
+           0.700       0.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+    TLI
+
+        Mean                                 0.990
+        Std Dev                              0.013
+        Number of successful computations     9967
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       0.351
+           0.980       0.190
+           0.950       0.014
+           0.900       0.000
+           0.800       0.000
+           0.700       0.000
+           0.500       0.000
+           0.300       0.000
+           0.200       0.000
+           0.100       0.000
+           0.050       0.000
+           0.020       0.000
+           0.010       0.000
+
+SRMR (Standardized Root Mean Square Residual)
+
+        Mean                                 0.055
+        Std Dev                              0.012
+        Number of successful computations     9967
+
+        Cumulative Distribution Function
+           Value    Function Value
+           0.990       1.000
+           0.980       1.000
+           0.950       1.000
+           0.900       1.000
+           0.800       1.000
+           0.700       1.000
+           0.500       1.000
+           0.300       1.000
+           0.200       1.000
+           0.100       0.995
+           0.050       0.382
+           0.020       0.000
+           0.010       0.000
+
+
+MODEL RESULTS
+
+                              ESTIMATES              S. E.     M. S. E.  95%  % Sig
+                 Population   Average   Std. Dev.   Average             Cover Coeff
+
+ PEOU     BY
+  PEOU1               0.800     0.8006     0.0875     0.0865     0.0077 0.945 1.000
+  PEOU2               0.800     0.7997     0.0870     0.0864     0.0076 0.948 1.000
+  PEOU3               0.800     0.7986     0.0875     0.0864     0.0077 0.947 1.000
+  PEOU4               0.800     0.7994     0.0867     0.0864     0.0075 0.950 1.000
+
+ PU       BY
+  PU1                 0.800     0.7907     0.0916     0.0901     0.0085 0.939 1.000
+  PU2                 0.800     0.7922     0.0905     0.0901     0.0083 0.946 1.000
+  PU3                 0.800     0.7909     0.0920     0.0901     0.0085 0.939 1.000
+  PU4                 0.800     0.7922     0.0906     0.0901     0.0083 0.946 1.000
+
+ BI       BY
+  BI1                 0.800     0.7704     0.1695     0.1699     0.0296 0.981 0.966
+  BI2                 0.800     0.7712     0.1702     0.1701     0.0298 0.979 0.966
+
+ PU       ON
+  PEOU                0.500     0.5115     0.1243     0.1214     0.0156 0.951 0.996
+
+ BI       ON
+  PEOU                0.500     0.5616     0.4331     0.6029     0.1914 0.961 0.950
+  PU                  0.500     0.5522     0.3690     0.5296     0.1389 0.961 0.950
+
+ Means
+  PEOU                0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+
+ Intercepts
+  PEOU1               0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PEOU2               0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PEOU3               0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PEOU4               0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PU1                 0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PU2                 0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PU3                 0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PU4                 0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  BI1                 0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  BI2                 0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  PU                  0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+  BI                  0.000     0.0000     0.0000     0.0000     0.0000 1.000 0.000
+
+ Variances
+  PEOU                1.000     1.0000     0.0000     0.0000     0.0000 1.000 0.000
+
+ Residual Variances
+  PEOU1               0.360     0.3564     0.0665     0.0659     0.0044 0.935 1.000
+  PEOU2               0.360     0.3555     0.0666     0.0658     0.0045 0.934 1.000
+  PEOU3               0.360     0.3554     0.0673     0.0657     0.0045 0.929 1.000
+  PEOU4               0.360     0.3560     0.0672     0.0658     0.0045 0.930 1.000
+  PU1                 0.360     0.3563     0.0680     0.0658     0.0046 0.933 1.000
+  PU2                 0.360     0.3550     0.0670     0.0657     0.0045 0.932 1.000
+  PU3                 0.360     0.3556     0.0673     0.0657     0.0045 0.934 1.000
+  PU4                 0.360     0.3551     0.0667     0.0657     0.0045 0.930 1.000
+  BI1                 0.360     0.3544     0.0790     0.0777     0.0063 0.943 0.995
+  BI2                 0.360     0.3547     0.0787     0.0779     0.0062 0.942 0.996
+  PU                  0.750     0.7500     0.0000     0.0000     0.0000 1.000 0.000
+  BI                  0.250     0.2500     0.0000     0.0000     0.0000 1.000 0.000
+
+
+QUALITY OF NUMERICAL RESULTS
+
+     Average Condition Number for the Information Matrix      0.426E-01
+       (ratio of smallest to largest eigenvalue)
+
+
+TOTAL, TOTAL INDIRECT, SPECIFIC INDIRECT, AND DIRECT EFFECTS
+
+
+                              ESTIMATES              S. E.     M. S. E.  95%  % Sig
+                 Population   Average   Std. Dev.   Average             Cover Coeff
+
+Effects from PEOU to BI
+
+  Sum indirect        0.500     0.5583     0.3919     0.5638     0.1570 0.946 0.925
+
+ Specific indirect 1
+  BI
+  PU
+  PEOU                0.250     0.2792     0.1959     0.2819     0.0392 0.946 0.925
+
+ Specific indirect 2
+  BI
+  PU
+  PEOU                0.250     0.2792     0.1959     0.2819     0.0392 0.946 0.925
+
+
+
+TECHNICAL OUTPUT
+
+
+     PARAMETER SPECIFICATION
+
+
+           NU
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           NU
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+                  0             0             0             0             0
+
+
+           LAMBDA
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU1              1             0             0
+ PEOU2              2             0             0
+ PEOU3              3             0             0
+ PEOU4              4             0             0
+ PU1                0             5             0
+ PU2                0             6             0
+ PU3                0             7             0
+ PU4                0             8             0
+ BI1                0             0             9
+ BI2                0             0            10
+
+
+           THETA
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+ PEOU1             11
+ PEOU2              0            12
+ PEOU3              0             0            13
+ PEOU4              0             0             0            14
+ PU1                0             0             0             0            15
+ PU2                0             0             0             0             0
+ PU3                0             0             0             0             0
+ PU4                0             0             0             0             0
+ BI1                0             0             0             0             0
+ BI2                0             0             0             0             0
+
+
+           THETA
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+ PU2               16
+ PU3                0            17
+ PU4                0             0            18
+ BI1                0             0             0            19
+ BI2                0             0             0             0            20
+
+
+           ALPHA
+              PEOU          PU            BI
+              ________      ________      ________
+                  0             0             0
+
+
+           BETA
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU               0             0             0
+ PU                21             0             0
+ BI                22            23             0
+
+
+           PSI
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU               0
+ PU                 0             0
+ BI                 0             0             0
+
+
+     STARTING VALUES
+
+
+           NU
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU1          0.800         0.000         0.000
+ PEOU2          0.800         0.000         0.000
+ PEOU3          0.800         0.000         0.000
+ PEOU4          0.800         0.000         0.000
+ PU1            0.000         0.800         0.000
+ PU2            0.000         0.800         0.000
+ PU3            0.000         0.800         0.000
+ PU4            0.000         0.800         0.000
+ BI1            0.000         0.000         0.800
+ BI2            0.000         0.000         0.800
+
+
+           THETA
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+ PEOU1          0.360
+ PEOU2          0.000         0.360
+ PEOU3          0.000         0.000         0.360
+ PEOU4          0.000         0.000         0.000         0.360
+ PU1            0.000         0.000         0.000         0.000         0.360
+ PU2            0.000         0.000         0.000         0.000         0.000
+ PU3            0.000         0.000         0.000         0.000         0.000
+ PU4            0.000         0.000         0.000         0.000         0.000
+ BI1            0.000         0.000         0.000         0.000         0.000
+ BI2            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+ PU2            0.360
+ PU3            0.000         0.360
+ PU4            0.000         0.000         0.360
+ BI1            0.000         0.000         0.000         0.360
+ BI2            0.000         0.000         0.000         0.000         0.360
+
+
+           ALPHA
+              PEOU          PU            BI
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           BETA
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU           0.000         0.000         0.000
+ PU             0.500         0.000         0.000
+ BI             0.500         0.500         0.000
+
+
+           PSI
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU           1.000
+ PU             0.000         0.750
+ BI             0.000         0.000         0.250
+
+
+     POPULATION VALUES
+
+
+           NU
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           NU
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+                0.000         0.000         0.000         0.000         0.000
+
+
+           LAMBDA
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU1          0.800         0.000         0.000
+ PEOU2          0.800         0.000         0.000
+ PEOU3          0.800         0.000         0.000
+ PEOU4          0.800         0.000         0.000
+ PU1            0.000         0.800         0.000
+ PU2            0.000         0.800         0.000
+ PU3            0.000         0.800         0.000
+ PU4            0.000         0.800         0.000
+ BI1            0.000         0.000         0.800
+ BI2            0.000         0.000         0.800
+
+
+           THETA
+              PEOU1         PEOU2         PEOU3         PEOU4         PU1
+              ________      ________      ________      ________      ________
+ PEOU1          0.360
+ PEOU2          0.000         0.360
+ PEOU3          0.000         0.000         0.360
+ PEOU4          0.000         0.000         0.000         0.360
+ PU1            0.000         0.000         0.000         0.000         0.360
+ PU2            0.000         0.000         0.000         0.000         0.000
+ PU3            0.000         0.000         0.000         0.000         0.000
+ PU4            0.000         0.000         0.000         0.000         0.000
+ BI1            0.000         0.000         0.000         0.000         0.000
+ BI2            0.000         0.000         0.000         0.000         0.000
+
+
+           THETA
+              PU2           PU3           PU4           BI1           BI2
+              ________      ________      ________      ________      ________
+ PU2            0.360
+ PU3            0.000         0.360
+ PU4            0.000         0.000         0.360
+ BI1            0.000         0.000         0.000         0.360
+ BI2            0.000         0.000         0.000         0.000         0.360
+
+
+           ALPHA
+              PEOU          PU            BI
+              ________      ________      ________
+                0.000         0.000         0.000
+
+
+           BETA
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU           0.000         0.000         0.000
+ PU             0.500         0.000         0.000
+ BI             0.500         0.500         0.000
+
+
+           PSI
+              PEOU          PU            BI
+              ________      ________      ________
+ PEOU           1.000
+ PU             0.000         0.750
+ BI             0.000         0.000         0.250
+
+
+TECHNICAL 9 OUTPUT
+
+  Error messages for each replication (if any)
+
+
+     REPLICATION 322:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 564:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.266D-10.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+
+     REPLICATION 1104:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+     THE CONDITION NUMBER IS      -0.156D-11.
+
+     REPLICATION 1278:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 1293:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+     THE CONDITION NUMBER IS      -0.999D-10.
+
+     REPLICATION 2672:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 2714:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3178:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3233:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3274:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3500:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3525:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3629:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3644:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 3828:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 4290:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 5228:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 5441:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 5707:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 5819:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES MAY NOT BE
+     TRUSTWORTHY FOR SOME PARAMETERS DUE TO A NON-POSITIVE DEFINITE
+     FIRST-ORDER DERIVATIVE PRODUCT MATRIX.  THIS MAY BE DUE TO THE STARTING
+     VALUES BUT MAY ALSO BE AN INDICATION OF MODEL NONIDENTIFICATION.  THE
+     CONDITION NUMBER IS       0.253D-11.  PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+
+     REPLICATION 6535:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 6678:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+     THE CONDITION NUMBER IS       0.562D-11.
+
+     REPLICATION 6702:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 7286:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 7620:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 7693:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 8057:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 8269:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 8381:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+     THE CONDITION NUMBER IS      -0.932D-11.
+
+     REPLICATION 8667:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+     THE CONDITION NUMBER IS      -0.588D-09.
+
+     REPLICATION 8954:
+
+     THE STANDARD ERRORS OF THE MODEL PARAMETER ESTIMATES COULD NOT BE
+     COMPUTED.  THE MODEL MAY NOT BE IDENTIFIED.  CHECK YOUR MODEL.
+     PROBLEM INVOLVING THE FOLLOWING PARAMETER:
+     Parameter 23, BI ON PU
+
+     THE CONDITION NUMBER IS      -0.301D-10.
+
+     REPLICATION 9292:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 9487:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 9922:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+     REPLICATION 9967:
+
+     NO CONVERGENCE.  NUMBER OF ITERATIONS EXCEEDED.
+
+
+DIAGRAM INFORMATION
+
+  Mplus diagrams are currently not available for Monte Carlo analysis.
+  No diagram output was produced.
+
+
+     Beginning Time:  11:46:54
+        Ending Time:  11:47:12
+       Elapsed Time:  00:00:18
+
+
+
+MUTHEN & MUTHEN
+3463 Stoner Ave.
+Los Angeles, CA  90066
+
+Tel: (310) 391-9971
+Fax: (310) 391-8971
+Web: www.StatModel.com
+Support: Support@StatModel.com
+
+Copyright (c) 1998-2020 Muthen & Muthen
